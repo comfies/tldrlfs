@@ -18,4 +18,6 @@ Prerequisites:
 
 * If you don't want to work on actual hardware, you are always able to work from a virtual machine.
 
-If you're ready to begin, go ahead and read `guide/0 - preparing storage medium`
+If you're ready to begin, go ahead and read on.
+
+# Preparing Storage Medium
