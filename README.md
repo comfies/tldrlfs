@@ -18,7 +18,7 @@ Prerequisites:
 - An already running Linux install to bootstrap from*
 - A storage medium to install to*
 
-* If you don't want to work on actual hardware, you are always able to work from a virtual machine.
+\* If you don't want to work on actual hardware, you are always able to work from a virtual machine.
 
 If you're ready to begin, go ahead and read on.
 
