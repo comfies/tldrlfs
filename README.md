@@ -102,7 +102,7 @@ Note that the device we're working on (`/dev/sdb`) is referenced as `/dev/sda` i
 With the init file created, you can now generate the cpio image and place it into your boot directory. You should still be within your initramfs build directory.
 
 ```
-find . -print0 | cpio --null --create --format=newc | gzip --best > $BUILDDIR/boot/initramfs.gz
+find . | cpio --create --format=newc | gzip --best > $BUILDDIR/boot/initramfs.gz
 ```
 
 # Installing an init for the system to use
