@@ -105,4 +105,6 @@ With the init file created, you can now generate the cpio image and place it int
 find . | cpio --create --format=newc | gzip --best > $BUILDDIR/boot/initramfs.gz
 ```
 
+You're done, and can cd into the parent of the build directory once more.
+
 # Installing an init for the system to use
