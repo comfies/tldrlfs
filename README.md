@@ -8,7 +8,6 @@ Linux From Scratch, while it is a great book, provides a lot of unnecessary info
 
 The content that will be covered in this README include the following:
 - Building the Linux kernel
-- Creating an initramfs
 - Installing an init for the system to use
 - Installing a shell
 - Installing an implementation of core utilities
@@ -68,43 +67,5 @@ $ cp -iv ./arch/x86_64/boot/bzImage $BUILDDIR/boot/vmlinuz-help-im-trapped-insid
 $ cp -iv System.map $BUILDDIR/boot/System.map
 $ cp -iv .config $BUILDDIR/boot/config
 ```
-
-# Creating an initramfs
-
-An initramfs is a filesystem that the kernel will load into RAM that is then used to mount the real root device and boot it. To create an initramfs cpio image, you will need a dedicated build directory for it. You'll need to create the basic kernel API filesystem, as well as any utilities you'd like to include with the initramfs image (e.g. busybox shell), and a file located in the root named `init` (this is not the same as your system init; this file is executed by the kernel to switch roots into the actual filesystem and load the real init).
-
-```
-mkdir -p ./initramfs/{proc,sys,dev,bin}
-export INITRAMFS=./initramfs
-cd $INITRAMFS
-mkdir -p ./mnt/real_root
-```
-
-The init file here can be change as necessary for your system, but given that this guide is for those who just want a very basic system, we'll be making a very basic init.
-
-```
-cat > ./init << EOF
-#!/bin/busybox sh
-
-mount -t devtmpfs none /dev
-mount -t proc none /proc
-mount -t sysfs none /sys
-
-mkdir /mnt/real_root
-mount -o ro /dev/sda1 /mnt/real_root
-
-exec switch_root /mnt/real_root /sbin/init "$@"
-EOF
-```
-
-Note that the device we're working on (`/dev/sdb`) is referenced as `/dev/sda` in the init file. This is done on purpose because the device will be `/dev/sda` in the context of the kernel loading it as the root device.
-
-With the init file created, you can now generate the cpio image and place it into your boot directory. You should still be within your initramfs build directory.
-
-```
-find . | cpio --create --format=newc | gzip --best > $BUILDDIR/boot/initramfs.gz
-```
-
-You're done, and can cd into the parent of the build directory once more.
 
 # Installing an init for the system to use
