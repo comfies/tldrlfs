@@ -52,13 +52,13 @@ $ cd ./linux-5.1
 
 You'll need to prepare the kernel to be built, configure it, and then build it, in that order. It'll probably take some time.
 
-![Compilation time](https://imgs.xkcd.com/comics/compiling.png)
-
 ```
 $ make mrproper
 $ make nconfig
 $ make
 ```
+
+![Compilation time](https://imgs.xkcd.com/comics/compiling.png)
 
 Once done compiling, you'll copy the kernel image and various configuration files to `/boot` on your medium. Note that the kernel image name must start with `vmlinuz-`, anything afterwards doesn't really matter.
 
@@ -69,3 +69,20 @@ $ cp -iv .config $BUILDDIR/boot/config
 ```
 
 # Installing an init for the system to use
+
+To be able to boot into the system you will need an init. An init system handles the setting up and boot-time configuration of the system. You're free to use any init you wish, and there's a ton to select from, but for the purposes of this guide and my own personal biases, I'll be using my init, [hummingbird](https://github.com/Sweets/hummingbird).
+
+You'll need to clone the repository of your selected init, then build and install it. Installtion may vary based on which init you choose, so be sure to find some form of documentation on how to compile and install the init to a specific directory (or read the Makefile).
+
+This is also about the time where creating a configuration directory would be useful.
+
+```
+$ mkdir -p $BUILDDIR/etc
+$ git clone https://github.com/Sweets/hummingbird
+$ cd ./hummingbird
+$ DESTDIR=$BUILDDIR make install
+$ install -Dm755 ./etc/rc.init $BUILDDIR/etc/rc.init
+$ install -Dm755 ./etc/rc.shutdown $BUILDDIR/etc/rc.shutdown
+```
+
+# Installing a shell
