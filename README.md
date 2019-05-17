@@ -37,7 +37,7 @@ $ mount /dev/sdb1 ./build
 You'll need some additional directories to boot the system and have some usable tools, but for now we'll just need `/boot`.
 
 ```
-$ mkdir -p ./build/boot
+$ mkdir -p $BUILDDIR/boot
 ```
 
 # Building the Kernel
@@ -80,9 +80,37 @@ This is also about the time where creating a configuration directory would be us
 $ mkdir -p $BUILDDIR/etc
 $ git clone https://github.com/Sweets/hummingbird
 $ cd ./hummingbird
-$ DESTDIR=$BUILDDIR make install
+$ DESTDIR=$BUILDDIR CC="gcc -static" make install
 $ install -Dm755 ./etc/rc.init $BUILDDIR/etc/rc.init
 $ install -Dm755 ./etc/rc.shutdown $BUILDDIR/etc/rc.shutdown
 ```
 
 # Installing a shell
+
+While you can _technically_ get a system to run and operate by just those two things alone, a shell is a good way to interface with other programs via redirections, as well as a good way to script some operations. In general, to install a shell, you just build it and set the directory for it to install to. Which is exactly what we'll be doing with bash.
+
+```
+wget http://ftp.gnu.org/gnu/bash/bash-5.0.tar.gz
+tar xf ./bash-5.0.tar.gz
+cd ./bash-5.0
+```
+
+You'll need to configure bash to install to the build directory. The common install directory is `/usr/bin`, so that directory will need to exist as well.
+
+```
+mkdir -p $BUILDDIR/usr/bin
+./configure --prefix=$BUILDDIR/usr --enable-static-link
+make
+make install
+```
+
+Bash _should_ now be installed. You can verify that it was installed by changing directories to the build directory and chrooting.
+
+```
+cd $BUILDDIR
+chroot ./ /usr/bin/bash
+```
+
+If the command succeeds you will be in a bash shell, with no available commands. Press `Ctrl+D` or type `exit` to exit.
+
+# Installing an implementation of core utilities
