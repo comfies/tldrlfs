@@ -114,3 +114,16 @@ chroot ./ /usr/bin/bash
 If the command succeeds you will be in a bash shell, with no available commands. Press `Ctrl+D` or type `exit` to exit.
 
 # Installing an implementation of core utilities
+
+While there are many implementations of core utilities (busybox, toybox, GNU coreutils, ubase, sbase, BSD utils, etc), this guide strives for the most basic bitch of installs. By default anyways. That being said, the choice is obvious: GNU coreutils it is.
+
+Download, extract, configure, build, install. You get the idea by now, it's the same soup, just reheated. That's literally all Linux is -- a bowl of reheated soup.
+
+```
+wget https://ftp.gnu.org/gnu/coreutils/coreutils-8.31.tar.xz
+tar xf ./coreutils-8.31.tar.xz
+cd ./coreutils-8.31
+CFLAGS="-static" ./configure --prefix=$BUILDDIR/usr
+make
+make install
+```
