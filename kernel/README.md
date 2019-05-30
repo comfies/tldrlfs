@@ -7,10 +7,10 @@ Regardless of the means of which you get the source, extract the source if neces
 
 ### TL;DR
 
-```
-$ wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
-$ tar xf ./linux-5.1.tar.xz
-$ cd ./linux-5.1
+```sh
+wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
+tar xf ./linux-5.1.tar.xz
+cd ./linux-5.1
 ```
 
 ---
@@ -22,17 +22,17 @@ There are multiple methods by which you can configure the kernel, `menuconfig`, 
 
 ### TL;DR
 
-```
-$ make mrproper
-$ make nconfig
+```sh
+make mrproper
+make nconfig
 ```
 
 ---
 
 # Building
 
-```
-$ make
+```sh
+make
 ```
 
 Building will take four business days to complete, so you'll probably want to find something else to bide your time until compilation
@@ -48,10 +48,10 @@ Once done compiling, you'll copy the kernel image and various configuration file
 
 ### TL;DR
 
-```
-$ cp -iv ./arch/x86_64/boot/bzImage $BUILDDIR/boot/vmlinuz-help-im-trapped-inside-this-machine
-$ cp -iv System.map $BUILDDIR/boot/System.map
-$ cp -iv .config $BUILDDIR/boot/config
+```sh
+cp -iv ./arch/x86_64/boot/bzImage $BUILDDIR/boot/vmlinuz-help-im-trapped-inside-this-machine
+cp -iv System.map $BUILDDIR/boot/System.map
+cp -iv .config $BUILDDIR/boot/config
 ```
 
 #### See the bootloader section for kernel parameters
