@@ -85,6 +85,20 @@ chroot ./ /usr/bin/bash
 
 If the command succeeds you will be in a bash shell, with no available commands. Press `Ctrl+D` or type `exit` to exit.
 
+## Using Dash instead
+Just in case you run into problems with bash, you can use the `dash` shell instead. Download it, extract it, and cd into it:
+```
+wget http://gondor.apana.org.au/~herbert/dash/files/dash-0.5.9.1.tar.gz
+tar xf ./dash-0.5.9.1.tar.gz
+cd dash-0.5.9.1
+```
+We can now compile `dash` and install it to `/usr/bin/`:
+```
+./configure --bindir=$BUILDDIR/usr/bin --mandir=$BUILDDIR/usr/share/man --enable-static
+make
+make install
+```
+
 # Installing an implementation of core utilities
 
 While there are many implementations of core utilities (busybox, toybox, GNU coreutils, ubase, sbase, BSD utils, etc), this guide strives for the most basic bitch of installs. By default anyways. That being said, the choice is obvious: GNU coreutils it is.
