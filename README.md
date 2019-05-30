@@ -6,8 +6,8 @@ In short, this guide will teach you to build a working operating system that use
 ## Preface
 Linux From Scratch, while it is a great book, provides a lot of unnecessary information. To get a Linux based operating system off of the ground, you only need two things, Linux, and an init. That's _it_. Of course, you will probably want to tailor your distribution to a specific purpose -- maybe you want a desktop, a specialized media server -- but whatever it may be, the two components mentioned above are the greatest common denominator. This GitHub repository README will guide you through the bare minimum for a running operating system using the Linux kernel, and just a _little_ bit more to make it more usable.
 
-The content that will be covered in this README include the following:
-- Building the Linux kernel
+The content that will be covered in this guide include the following:
+- [Building the Linux kernel](https://github.com/Sweets/tldrlfs/tree/master/kernel)
 - Installing an init for the system to use
 - Installing a shell
 - Installing an implementation of core utilities
@@ -38,34 +38,6 @@ You'll need some additional directories to boot the system and have some usable 
 
 ```
 $ mkdir -p $BUILDDIR/boot
-```
-
-# Building the Kernel
-
-You'll need to grab a copy of the kernel. You can clone a git repo or just download a tar, but we'll use tar. `--depth=1` is a life saver here if you have higher level brain functionality and use git.
-
-```
-$ wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
-$ tar xf ./linux-5.1.tar.xz
-$ cd ./linux-5.1
-```
-
-You'll need to prepare the kernel to be built, configure it, and then build it, in that order. It'll probably take some time.
-
-```
-$ make mrproper
-$ make nconfig
-$ make
-```
-
-![Compilation time](https://imgs.xkcd.com/comics/compiling.png)
-
-Once done compiling, you'll copy the kernel image and various configuration files to `/boot` on your medium. Note that the kernel image name must start with `vmlinuz-`, anything afterwards doesn't really matter.
-
-```
-$ cp -iv ./arch/x86_64/boot/bzImage $BUILDDIR/boot/vmlinuz-help-im-trapped-inside-this-machine
-$ cp -iv System.map $BUILDDIR/boot/System.map
-$ cp -iv .config $BUILDDIR/boot/config
 ```
 
 # Installing an init for the system to use
