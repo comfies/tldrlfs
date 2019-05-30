@@ -27,6 +27,11 @@ make mrproper
 make nconfig
 ```
 
+Or, if you don't want to do any configuring and are OK with the defaults, just use:
+```
+make defconfig
+```
+
 ---
 
 # Building
