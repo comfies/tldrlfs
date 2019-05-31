@@ -5,8 +5,6 @@ The linux kernel source can be downloaded from many places, patched or otherwise
 
 Regardless of the means of which you get the source, extract the source if necessary, and cd into the directory.
 
-### TL;DR
-
 ```sh
 wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
 tar xf ./linux-5.1.tar.xz
@@ -19,8 +17,6 @@ cd ./linux-5.1
 
 There are multiple methods by which you can configure the kernel, `menuconfig`, `nconfig`, or `config`.
 `menuconfig` and `nconfig` both require ncurses.
-
-### TL;DR
 
 ```sh
 make mrproper
@@ -50,8 +46,6 @@ is complete.
 # Installation
 
 Once done compiling, you'll copy the kernel image and various configuration files to `/boot` on your medium. Note that the kernel image name must start with `vmlinuz-`, anything afterwards doesn't really matter.
-
-### TL;DR
 
 ```sh
 cp -iv ./arch/x86_64/boot/bzImage $BUILDDIR/boot/vmlinuz-help-im-trapped-inside-this-machine
