@@ -8,7 +8,7 @@ Linux From Scratch, while it is a great book, provides a lot of unnecessary info
 
 The content that will be covered in this guide include the following:
 - [Building the Linux kernel](https://github.com/Sweets/tldrlfs/tree/master/kernel)
-- Installing an init for the system to use
+- [Installing an init for the system to use](https://github.com/Sweets/tldrlfs/tree/master/init)
 - Installing a shell
 - Installing an implementation of core utilities
 - Installing a bootloader
@@ -38,23 +38,6 @@ You'll need some additional directories to boot the system and have some usable 
 
 ```
 $ mkdir -p $BUILDDIR/boot
-```
-
-# Installing an init for the system to use
-
-To be able to boot into the system you will need an init. An init system handles the setting up and boot-time configuration of the system. You're free to use any init you wish, and there's a ton to select from, but for the purposes of this guide and my own personal biases, I'll be using my init, [hummingbird](https://github.com/Sweets/hummingbird).
-
-You'll need to clone the repository of your selected init, then build and install it. Installtion may vary based on which init you choose, so be sure to find some form of documentation on how to compile and install the init to a specific directory (or read the Makefile).
-
-This is also about the time where creating a configuration directory would be useful.
-
-```
-$ mkdir -p $BUILDDIR/etc
-$ git clone https://github.com/Sweets/hummingbird
-$ cd ./hummingbird
-$ DESTDIR=$BUILDDIR CC="gcc -static" make install
-$ install -Dm755 ./etc/rc.init $BUILDDIR/etc/rc.init
-$ install -Dm755 ./etc/rc.shutdown $BUILDDIR/etc/rc.shutdown
 ```
 
 # Installing a shell
