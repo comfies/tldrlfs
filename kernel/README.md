@@ -48,9 +48,10 @@ is complete.
 Once done compiling, you'll copy the kernel image and various configuration files to `/boot` on your medium. Note that the kernel image name must start with `vmlinuz-`, anything afterwards doesn't really matter.
 
 ```sh
-cp -iv ./arch/x86_64/boot/bzImage $BUILDDIR/boot/vmlinuz-help-im-trapped-inside-this-machine
-cp -iv System.map $BUILDDIR/boot/System.map
-cp -iv .config $BUILDDIR/boot/config
+
+make install
 ```
+
+If you wish to use an uncompressed kernel, use the `extract-vmlinux` script provided by the kernel.
 
 #### See the bootloader section for kernel parameters
