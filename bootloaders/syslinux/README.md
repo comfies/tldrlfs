@@ -34,6 +34,10 @@ dd bs=440 conv=notrunc count=1 if=/usr/lib/syslinux/bios/mbr.bin of=/dev/sdX
 The most basic Syslinux configuration is just a label that is loaded. The configuration directory is `/boot/syslinux/syslinux.cfg`.
 
 ```
+DEFAULT Linux
+TIMEOUT 0
+PROMPT 0
+
 LABEL Linux
     LINUX ../vmlinuz-name
     APPEND root=/dev/sdXY loglevel=3 rw
