@@ -6,5 +6,5 @@ While they all mostly provide the same in terms of base functionality, that is c
 # Shell Installation Instructions
 
 - [Bash](#Todo)
-- [Dash](#Todo)
+- [Dash](https://github.com/Sweets/tldrlfs/tree/master/shells/dash)
 - [Zsh](#Todo)
