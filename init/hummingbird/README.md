@@ -10,9 +10,8 @@ cd ./hummingbird
 # Preparing
 
 ```sh
-mkdir -p $BUILDDIR/etc $BUILDDIR/sbin
-install -Dm755 ./etc/rc.init $BUILDDIR/etc/rc.init
-install -Dm755 ./etc/rc.shutdown $BUILDDIR/etc/rc.shutdown
+mkdir -p $BUILDDIR/usr/lib/hummingbird $BUILDDIR/sbin
+make DESTDIR=$BUILDDIR seed_install
 ```
 
 ---
@@ -28,6 +27,8 @@ DESTDIR=$BUILDDIR CC="gcc -static" make install
 # Installation
 
 ```sh
+install -Dm755 usr/lib/hummingbird/fs "$(BUILDDIR)/usr/lib/hummingbird/fs"
+install -Dm755 usr/lib/hummingbird/tty "$(BUILDDIR)/usr/lib/hummingbird/tty"
 cd $BUILDDIR
 ln -s usr/bin/hummingbird sbin/init
 ```
