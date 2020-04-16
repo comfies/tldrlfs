@@ -9,7 +9,7 @@ Linux From Scratch, while it is a great book, provides a lot of unnecessary info
 The content that will be covered in this guide include the following:
 - [Building the Linux kernel](https://github.com/Sweets/tldrlfs/tree/master/kernel)
 - [Installing an init for the system to use](https://github.com/Sweets/tldrlfs/tree/master/init)
-- Installing a shell
+- [Installing a shell](https://github.com/Sweets/tldrlfs/tree/master/shells)
 - Installing an implementation of core utilities
 - Installing a bootloader
 
@@ -38,48 +38,6 @@ You'll need some additional directories to boot the system and have some usable 
 
 ```
 $ mkdir -p $BUILDDIR/boot
-```
-
-# Installing a shell
-
-While you can _technically_ get a system to run and operate by just those two things alone, a shell is a good way to interface with other programs via redirections, as well as a good way to script some operations. In general, to install a shell, you just build it and set the directory for it to install to. Which is exactly what we'll be doing with bash.
-
-```
-wget http://ftp.gnu.org/gnu/bash/bash-5.0.tar.gz
-tar xf ./bash-5.0.tar.gz
-cd ./bash-5.0
-```
-
-You'll need to configure bash to install to the build directory. The common install directory is `/usr/bin`, so that directory will need to exist as well.
-
-```
-mkdir -p $BUILDDIR/usr/bin
-./configure --prefix=$BUILDDIR/usr --enable-static-link
-make
-make install
-```
-
-Bash _should_ now be installed. You can verify that it was installed by changing directories to the build directory and chrooting.
-
-```
-cd $BUILDDIR
-chroot ./ /usr/bin/bash
-```
-
-If the command succeeds you will be in a bash shell, with no available commands. Press `Ctrl+D` or type `exit` to exit.
-
-## Using Dash instead
-Just in case you run into problems with bash, you can use the `dash` shell instead. Download it, extract it, and cd into it:
-```
-wget http://gondor.apana.org.au/~herbert/dash/files/dash-0.5.9.1.tar.gz
-tar xf ./dash-0.5.9.1.tar.gz
-cd dash-0.5.9.1
-```
-We can now compile `dash` and install it to `/usr/bin/`:
-```
-./configure --bindir=$BUILDDIR/usr/bin --mandir=$BUILDDIR/usr/share/man --enable-static
-make
-make install
 ```
 
 # Installing an implementation of core utilities
