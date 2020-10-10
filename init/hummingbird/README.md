@@ -11,7 +11,7 @@ cd ./hummingbird
 
 ```sh
 mkdir -p $BUILDDIR/usr/lib/hummingbird $BUILDDIR/sbin
-make DESTDIR=$BUILDDIR seed_install
+make DESTDIR=$BUILDDIR install
 ```
 
 ---
