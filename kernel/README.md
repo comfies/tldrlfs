@@ -6,9 +6,9 @@ The linux kernel source can be downloaded from many places, patched or otherwise
 Regardless of the means of which you get the source, extract the source if necessary, and cd into the directory.
 
 ```sh
-wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
-tar xf ./linux-5.1.tar.xz
-cd ./linux-5.1
+wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.11.5.tar.xz
+tar xf ./linux-5.11.5.tar.xz
+cd ./linux-5.11.5
 ```
 
 ---
