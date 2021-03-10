@@ -19,13 +19,13 @@ There are multiple methods by which you can configure the kernel, `menuconfig`, 
 `menuconfig` and `nconfig` both require ncurses.
 
 ```sh
-make mrproper
-make nconfig
+make "$(nproc || printf '%s\n' 1)" mrproper
+make "$(nproc || printf '%s\n' 1)" nconfig
 ```
 
 Or, if you don't want to do any configuring and are OK with the defaults, just use:
 ```
-make defconfig
+make "$(nproc || printf '%s\n' 1)" defconfig
 ```
 
 ---
@@ -33,7 +33,7 @@ make defconfig
 # Building
 
 ```sh
-make
+make "$(nproc || printf '%s\n' 1)"
 ```
 
 Building will take four business days to complete, so you'll probably want to find something else to bide your time until compilation
@@ -49,7 +49,7 @@ Once done compiling, you'll copy the kernel image and various configuration file
 
 ```sh
 
-make install
+make "$(nproc || printf '%s\n' 1)" install
 ```
 
 If you wish to use an uncompressed kernel, use the `extract-vmlinux` script provided by the kernel.

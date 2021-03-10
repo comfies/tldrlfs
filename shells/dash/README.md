@@ -8,11 +8,11 @@ cd ./dash-0.5.11
 # Building
 ```
 ./configure --bindir=$BUILDDIR/usr/bin --mandir=$BUILDDIR/usr/share/man --enable-static
-make
+make "$(nproc || printf '%s\n' 1)"
 ```
 
 # Installation
 
 ```
-make install
+make "$(nproc || printf '%s\n' 1)" install
 ```

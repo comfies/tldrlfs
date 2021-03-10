@@ -11,7 +11,7 @@ cd ./hummingbird
 
 ```sh
 mkdir -p $BUILDDIR/usr/lib/hummingbird $BUILDDIR/sbin
-make DESTDIR=$BUILDDIR install
+make "$(nproc || printf '%s\n' 1)" DESTDIR=$BUILDDIR install
 ```
 
 ---
