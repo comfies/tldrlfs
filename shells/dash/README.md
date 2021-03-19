@@ -1,18 +1,18 @@
 # Preparation
 ```
-wget http://gondor.apana.org.au/~herbert/dash/files/dash-0.5.9.1.tar.gz
-tar xf ./dash-0.5.9.1.tar.gz
-cd dash-0.5.9.1
+wget http://gondor.apana.org.au/~herbert/dash/files/dash-0.5.11.tar.gz
+tar xf ./dash-0.5.11.tar.gz
+cd ./dash-0.5.11
 ```
 
 # Building
 ```
 ./configure --bindir=$BUILDDIR/usr/bin --mandir=$BUILDDIR/usr/share/man --enable-static
-make
+make "$(nproc || printf '%s\n' 1)"
 ```
 
 # Installation
 
 ```
-make install
+make "$(nproc || printf '%s\n' 1)" install
 ```
