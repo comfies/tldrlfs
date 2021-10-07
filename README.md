@@ -53,7 +53,4 @@ Just remember: have fun!
 ---
 
 # Contributing
-Hey you! Yes you! tl;dr lfs needs help! Feel free to contribute if you find something missing. Remember to read our CONTRIBUTING.md before contributing!
-<p align="center">
-  <a href="https://github.com/comfies/tldrlfs/blob/master/CONTRIBUTING.md"></a>
-</p>
+Hey you! Yes you! tl;dr lfs needs help! Feel free to contribute if you find something missing. Remember to read our <a href="https://github.com/comfies/tldrlfs/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> before contributing!
