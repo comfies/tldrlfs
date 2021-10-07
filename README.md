@@ -30,7 +30,7 @@ Table of Contents -
 
 There's only two prerequisites to begin tl;dr lfs.     
 (A) An already running Linux distribution to bootstrap from.     
-(B) a storage medium to install to.      
+(B) A storage medium to install to.      
 
 The distribution to bootstrap from does not necessarily need to be installed on anything; you can do this from a live medium if you so choose. If you're not comfortable working on real hardware or want to practice, you can always work with a virtual machine.
 
