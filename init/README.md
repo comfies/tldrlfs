@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://github.com">too long; didn't read linux from scratch</a>
   <br/>
-&lt; <a href="">builing the kernel</a> &mdash; installing an init &mdash; <a href="">installing a shell</a> &gt;
+&lt; <a href="https://github.com/comfies/tldrlfs/tree/master/kernel">building the kernel</a> &mdash; installing an init &mdash; <a href="https://github.com/comfies/tldrlfs/tree/master/shells">installing a shell</a> &gt;
 </p>
 
 ---
