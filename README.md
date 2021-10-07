@@ -17,18 +17,21 @@ This GitHub repository is comprised entirely of README files to guide you throug
 
 ---
 
-Table of Contents
+Table of Contents -
 
 - [building the kernel](https://github.com/comfies/tldrlfs/tree/master/kernel)
 - [installing an init](https://github.com/comfies/tldrlfs/tree/master/init)
 - [installing a shell](https://github.com/comfies/tldrlfs/tree/master/shells)
 - [installing a bootloader](https://github.com/comfies/tldrlfs/tree/master/bootloaders)
 - [core utilities](https://github.com/comfies/tldrlfs/tree/master/coreutils)
-- [additional guides](#)
+- [additional guides](https://github.com/comfies/tldrlfs/)
 
 ---
 
-There's only two prerequisites to begin tl;dr lfs. (1) An already running Linux distribution to bootstrap from, and (B) a storage medium to install to.
+There's only two prerequisites to begin tl;dr lfs.
+
+(1) An already running Linux distribution to bootstrap from     
+(B) A storage medium to install to.
 
 The distribution to bootstrap from does not necessarily need to be installed on anything; you can do this from a live medium if you so choose. If you're not comfortable working on real hardware or want to practice, you can always work with a virtual machine.
 
@@ -44,10 +47,9 @@ $ export BUILD_DIR=./tldrlfs
 
 `/dev/sdX` and `/dev/sdXY` refers to a device file for a storage medium. Yours may be `/dev/sdb`, `/dev/sdc`, or anything else. If you do not know the path for your device, you can use `lsblk`. `X` refers to the drive itself, and `Y` is the specific partition you wish to use.
 
-You are not at all tied to using `ext4` as your filesystem, `fdisk` for your partitioning program, or otherwise. Keep in mind, this is a guide, not a legally binding contract.
-Feel free to supplement your own preferences where applicable.
+You are not at all tied to using `ext4` as your filesystem, `fdisk` for your partitioning program, or otherwise. Keep in mind, this is a guide, not a legally binding contract. Feel free to supplement your own preferences where applicable.
 
-Just remember: have fun.
+Just remember: have fun!
 
 ---
 
