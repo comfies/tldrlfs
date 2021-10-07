@@ -1,57 +1,64 @@
-# Source
+<p align="center">
+  <a href="https://github.com">too long; didn't read linux from scratch</a>
+  <br/>
+builing the kernel &mdash; <a href="https://github.com/comfies/tldrlfs/tree/master/init">installing an init</a> &gt;
+</p>
 
-The linux kernel source can be downloaded from many places, patched or otherwise, but one of the best places to get the kernel source is
-[kernel.org](https://kernel.org/). If you're cloning a git repository, `--depth=1` will make the download process a lot quicker.
+---
 
-Regardless of the means of which you get the source, extract the source if necessary, and cd into the directory.
+The kernel source can be downloaded from many places, patched or otherwise, but one of the best places to get the source is [kernel.org](https://kernel.org).
+If you're cloning a git repository, adding the depth flag with `--depth=1` will make the cloning process much quicker.
+
+Regardless of your means of obtaining the source, extract as necessary and change directories.
 
 ```sh
-wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.11.5.tar.xz
-tar xf ./linux-5.11.5.tar.xz
-cd ./linux-5.11.5
+$ export VER=5.13.12
+$ wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-$VER.tar.xz
+$ tar xf ./linux-$VER.tar.xz
+$ cd ./linux-$VER
 ```
 
 ---
 
-# Preparing
-
-There are multiple methods by which you can configure the kernel, `menuconfig`, `nconfig`, or `config`.
-`menuconfig` and `nconfig` both require ncurses.
+Configuration of the kernel can be done via `menuconfig`, `nconfig`, or `config`. The former two require ncurses to run.
 
 ```sh
-make "$(nproc || printf '%s\n' 1)" mrproper
-make "$(nproc || printf '%s\n' 1)" nconfig
+$ make "$(nproc || printf '%s\n' 1)" mrproper
+$ make "$(nproc || printf '%s\n' 1)" nconfig
 ```
 
-Or, if you don't want to do any configuring and are OK with the defaults, just use:
-```
-make "$(nproc || printf '%s\n' 1)" defconfig
+If you wish to use the default configuration, using the `defconfig` make target will generate the default configuration.
+
+```sh
+$ make "$(nproc || printf '%s\n' 1)" defconfig
 ```
 
 ---
 
-# Building
+Building the kernel itself will take about four business days to complete, so you'll probably want to find something else to bide your time until compilation is complete. Unless you prefer to watch paint dry.
+
+If you left module support enabled in the configuration you will need to execute the `modules_install` make target as well.
 
 ```sh
-make "$(nproc || printf '%s\n' 1)"
+$ make "$(nproc || printf '%s\n' 1)"
+# skip the next command if module support is disabled
+$ make "$(nproc || printf '%s\n' 1" modules_install
 ```
-
-Building will take four business days to complete, so you'll probably want to find something else to bide your time until compilation
-is complete.
-
-![Compilation time](https://imgs.xkcd.com/comics/compiling.png)
 
 ---
 
-# Installation
-
-Once done compiling, you'll copy the kernel image and various configuration files to `/boot` on your medium. Note that the kernel image name must start with `vmlinuz-`, anything afterwards doesn't really matter.
+Once compilation has completed, you'll copy the image to the boot directory of your installation. It is recommended that you also copy over the symbol file and configuration file, but not required.
+While not required, it is also recommended that you prefix your kernel image filename with `vmlinuz-`.
 
 ```sh
-
-make "$(nproc || printf '%s\n' 1)" install
+$ mkdir $BUILD_DIR/boot
+$ cp -iv arch/x86/boot/bzImage $BUILD_DIR/boot/vmlinuz-$VER
+$ cp -iv System.map $BUILD_DIR/boot/System.map-$VER
+$ cp -iv .config $BUILD_DIR/boot/config-$VER
 ```
 
-If you wish to use an uncompressed kernel, use the `extract-vmlinux` script provided by the kernel.
+---
 
-#### See the bootloader section for kernel parameters
+<p align="center">
+  <a href="https://github.com/comfies/tldrlfs/blob/master/CONTRIBUTING.md">tl;dr lfs needs help! feel free to contribute if you find something missing</a>
+</p>
