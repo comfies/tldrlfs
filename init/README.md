@@ -1,18 +1,29 @@
-# Installing an Init for the System to Use
+<p align="center">
+  <a href="https://github.com">too long; didn't read linux from scratch</a>
+  <br/>
+&lt; <a href="">builing the kernel</a> &mdash; installing an init &mdash; <a href="">installing a shell</a> &gt;
+</p>
 
-The kernel does not boot into a usable system, rather it starts an init, which is a program dedicated to setting up the system for usage.
-There's many inits to choose from, and they all have different reasons as to why you would or would not use them.
-Unfortunately, this guide is in its infancy, and so it only provides instructions for one, that being [hummingbird](https://github.com/Sweets/hummingbird).
+---
 
-As a reader, feel free to contribute more to provide more options for others to build on their system.
+The kernel does not boot into a usable system on its own. The kernel will execute the path defined in the `init` kernel parameter whenever it is ready to drop the user from kernel space. If the kernel parameter is not provided, the kernel will attempt to execute any of `/sbin/init`, `/etc/init`, `/bin/init`, whichever is found first.
 
-# Running the init
+If no working init is found, the kernel will attempt to execute the binary at path `/bin/sh`. If all else fails, a kernel panic will ensue.
 
-If there is no early userspace, the kernel will attempt to execute any of `/sbin/init`, `/etc/init`, `/bin/init` (ordered from highest to least precedence).
-If no working init is found, the kernel will attempt to execute `/bin/sh`. The kernel will panic if all of these fail.
+---
 
-If the `init` kernel parameter is supplied to the kernel at boot, it will attempt to execute the file at the given path first (see the bootloader section for kernel parameters).
+There is no real requirement for what process is executed as PID 1. If you have embedded hardware that only ever runs one program, it may be in your best interest to just point the `init` path to that program. On a desktop, however, typically there is a program that will spawn more processes to make the system more usable to the end user.
 
-## Init build instructions
+These programs are called "inits." In some cases they may be complex systems which interface with the child processes, and in others they may be simple programs that attempt to spawn children but have no regard for whether they succeed, fail, or even die at a later point in time.
 
-- [hummingbird](https://github.com/Sweets/tldrlfs/tree/master/init/hummingbird)
+---
+
+Installation guides
+
+- [hummingbird](https://github.com/comfies/tldrlfs/tree/master/init/hummingbird)
+
+---
+
+<p align="center">
+  <a href="https://github.com/comfies/tldrlfs/blob/master/CONTRIBUTING.md">tl;dr lfs needs help! feel free to contribute if you find something missing</a>
+</p>
