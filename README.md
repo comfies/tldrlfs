@@ -1,41 +1,56 @@
-# tldrlfs
-Too Long; Didn't Read Linux From Scratch
+<p align="center">
+  <a href="https://github.com">too long; didn't read linux from scratch</a>
+  <br/>
+</p>
 
-In short, this guide will teach you to build a working operating system that uses the Linux kernel in much fewer commands than LFS. It will take a much smaller amount of time, copious amounts of alcohol if you're so inclined, and plenty of cursing.
+---
 
-## Preface
-Linux From Scratch, while it is a great book, provides a lot of unnecessary information. To get a Linux based operating system off of the ground, you only need two things, Linux, and an init. That's _it_. Of course, you will probably want to tailor your distribution to a specific purpose -- maybe you want a desktop, a specialized media server -- but whatever it may be, the two components mentioned above are the greatest common denominator. This GitHub repository README will guide you through the bare minimum for a running operating system using the Linux kernel, and just a _little_ bit more to make it more usable.
+too long; didn't read linux from scratch.
 
-The content that will be covered in this guide include the following:
-- [Building the Linux kernel](https://github.com/Sweets/tldrlfs/tree/master/kernel)
-- [Installing an init for the system to use](https://github.com/Sweets/tldrlfs/tree/master/init)
-- [Installing a shell](https://github.com/Sweets/tldrlfs/tree/master/shells)
-- [Installing an implementation of core utilities](https://github.com/Sweets/tldrlfs/tree/master/coreutils)
-- [Installing a bootloader](https://github.com/Sweets/tldrlfs/tree/master/bootloaders)
+tldrlfs is a short guide that will teach you how to build a working operating system using the Linux kernel in much fewer commands and less time than LFS. It's meant to inform the reader, but be much more straight to the point in nature. All that's needed is a little bit of time, some hardware to work on, and if you're so inclined, copious amounts of alcohol if you want a fun drinking game.
 
-Prerequisites:
-- An already running Linux install to bootstrap from*
-- A storage medium to install to*
+---
 
-\* If you don't want to work on actual hardware, you are always able to work from a virtual machine.
+While Linux From Scratch is a great book, it provides a fair bit of unnecessary information to an end user. It is filled to the brim with information, and while that's not at all a bad thing, it is very daunting to readers who wish to only have a minimal operating system. At the bare minimum you only need the kernel and a process that runs as PID 1. _That's it._ Of course, readers probably want a tailored distribution to their needs. Perhaps that's a desktop, a specialized media server -- whatever the case may be, the two components previously mentioned are the greatest common denominator.
 
-If you're ready to begin, go ahead and read on.
+This GitHub repository is comprised entirely of README files to guide you through the bare minimum and just a _little_ bit more to get an operating system up and off the ground.
 
-# Preparing Storage Medium
+---
 
-You'll need to create a directory to work in. It can be named anything, but for the purposes of TLDRLFS, it'll be called "build".
-Once a build directory has been made you'll need to mount and format your storage medium. Hopefully you don't have anything you need on that medium. TLDRLFS assumes that your device is `/dev/sdb`.
+Table of Contents
 
-```
-$ mkdir -p ./build
-$ export BUILDDIR=./build
-$ fdisk /dev/sdb # partition the disk (translation, just fuck all the data on the device and make a single partition)
-$ mkfs.ext4 /dev/sdb1
-$ mount /dev/sdb1 ./build
-```
+- [building the kernel](https://github.com/comfies/tldrlfs/tree/master/kernel)
+- [installing an init](https://github.com/comfies/tldrlfs/tree/master/init)
+- [installing a shell](https://github.com/comfies/tldrlfs/tree/master/shells)
+- [installing a bootloader](https://github.com/comfies/tldrlfs/tree/master/bootloaders)
+- [core utilities](https://github.com/comfies/tldrlfs/tree/master/coreutils)
+- [additional guides](#)
 
-You'll need some additional directories to boot the system and have some usable tools, but for now we'll just need `/boot`.
+---
+
+There's only two prerequisites to begin tl;dr lfs. (1) An already running Linux distribution to bootstrap from, and (B) a storage medium to install to.
+
+The distribution to bootstrap from does not necessarily need to be installed on anything; you can do this from a live medium if you so choose. If you're not comfortable working on real hardware or want to practice, you can always work with a virtual machine.
+
+To prepare you storage medium you will need to partition the disk, format it, and mount it somewhere on your currently running distribution.
 
 ```
-$ mkdir -p $BUILDDIR/boot
+$ mkdir -p ./tldrlfs
+$ fdisk /dev/sdX
+$ mkfs.ext4 /dev/sdXY
+$ mount /dev/sdXY ./tldrlfs
+$ export BUILD_DIR=./tldrlfs
 ```
+
+`/dev/sdX` and `/dev/sdXY` refers to a device file for a storage medium. Yours may be `/dev/sdb`, `/dev/sdc`, or anything else. If you do not know the path for your device, you can use `lsblk`. `X` refers to the drive itself, and `Y` is the specific partition you wish to use.
+
+You are not at all tied to using `ext4` as your filesystem, `fdisk` for your partitioning program, or otherwise. Keep in mind, this is a guide, not a legally binding contract.
+Feel free to supplement your own preferences where applicable.
+
+Just remember: have fun.
+
+---
+
+<p align="center">
+  <a href="https://github.com/comfies/tldrlfs/blob/master/CONTRIBUTING.md">tl;dr lfs needs help! feel free to contribute if you find something missing</a>
+</p>
