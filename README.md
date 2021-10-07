@@ -29,7 +29,8 @@ Table of Contents -
 ---
 
 There's only two prerequisites to begin tl;dr lfs.
-1 - An already running Linux distribution to bootstrap from     
+
+(1) An already running Linux distribution to bootstrap from     
 (B) A storage medium to install to.
 
 The distribution to bootstrap from does not necessarily need to be installed on anything; you can do this from a live medium if you so choose. If you're not comfortable working on real hardware or want to practice, you can always work with a virtual machine.
@@ -52,5 +53,6 @@ Just remember: have fun!
 
 ---
 
-# Contributing
-Hey you! Yes you! tl;dr lfs needs help! Feel free to contribute if you find something missing. Remember to read our <a href="https://github.com/comfies/tldrlfs/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> before contributing!
+<p align="center">
+  <a href="https://github.com/comfies/tldrlfs/blob/master/CONTRIBUTING.md">tl;dr lfs needs help! feel free to contribute if you find something missing</a>
+</p>
