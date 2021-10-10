@@ -23,14 +23,14 @@ $ cd ./linux-$VER
 Configuration of the kernel can be done via `menuconfig`, `nconfig`, or `config`. The former two require ncurses to run.
 
 ```sh
-$ make "$(nproc || printf '%s\n' 1)" mrproper
-$ make "$(nproc || printf '%s\n' 1)" nconfig
+$ make -j $THREADS mrproper
+$ make -j $THREADS nconfig
 ```
 
 If you wish to use the default configuration, using the `defconfig` make target will generate the default configuration.
 
 ```sh
-$ make "$(nproc || printf '%s\n' 1)" defconfig
+$ make -j $THREADS defconfig
 ```
 
 ---
@@ -40,9 +40,9 @@ Building the kernel itself will take about four business days to complete, so yo
 If you left module support enabled in the configuration you will need to execute the `modules_install` make target as well.
 
 ```sh
-$ make "$(nproc || printf '%s\n' 1)"
+$ make -j $THREADS
 # skip the next command if module support is disabled
-$ make "$(nproc || printf '%s\n' 1" modules_install
+$ make -j $THREADS modules_install
 ```
 
 ---
