@@ -43,6 +43,7 @@ $ fdisk /dev/sdX
 $ mkfs.ext4 /dev/sdXY
 $ mount /dev/sdXY ./tldrlfs
 $ export BUILD_DIR=./tldrlfs
+$ export THREADS=$(nproc || printf '%s\n' 1)
 ```
 
 `/dev/sdX` and `/dev/sdXY` refers to a device file for a storage medium. Yours may be `/dev/sdb`, `/dev/sdc`, or anything else. If you do not know the path for your device, you can use `lsblk`. `X` refers to the drive itself, and `Y` is the specific partition you wish to use.
