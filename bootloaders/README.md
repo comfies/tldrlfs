@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://github.com">too long; didn't read linux from scratch</a>
   <br/>
-&lt; <a href="https://github.com/comfies/tldrlfs/tree/master/shells">installing a shell</a> &mdash; installing a bootloader &mdash; <a href="https://github.com/comfies/tldrlfs/tree/master/bootloaders">core utilities</a> &gt;
+&lt; <a href="https://github.com/comfies/tldrlfs/tree/master/shells">installing a shell</a> &mdash; installing a bootloader &mdash; <a href="https://github.com/comfies/tldrlfs/tree/master/coreutils">core utilities</a> &gt;
 </p>
 
 ---
