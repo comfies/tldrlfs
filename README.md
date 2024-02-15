@@ -42,7 +42,7 @@ $ mkdir -p ./tldrlfs
 $ fdisk /dev/sdX
 $ mkfs.ext4 /dev/sdXY
 $ mount /dev/sdXY ./tldrlfs
-$ export BUILD_DIR=./tldrlfs
+$ export BUILDDIR=./tldrlfs
 $ export THREADS=$(nproc || printf '%s\n' 1)
 ```
 
