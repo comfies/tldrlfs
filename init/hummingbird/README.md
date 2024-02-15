@@ -27,8 +27,8 @@ DESTDIR=$BUILDDIR CC="gcc -static" make install
 # Installation
 
 ```sh
-install -Dm755 usr/lib/hummingbird/fs "$(BUILDDIR)/usr/lib/hummingbird/fs"
-install -Dm755 usr/lib/hummingbird/tty "$(BUILDDIR)/usr/lib/hummingbird/tty"
+install -Dm755 usr/lib/hummingbird/fs "$BUILDDIR/usr/lib/hummingbird/fs"
+install -Dm755 usr/lib/hummingbird/tty "$BUILDDIR/usr/lib/hummingbird/tty"
 cd $BUILDDIR
 ln -s usr/bin/hummingbird sbin/init
 ```
